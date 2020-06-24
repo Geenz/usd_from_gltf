@@ -49,7 +49,7 @@ add_library(gltf
   image_parsing.h
 )
 
-file(GLOB GLTF_HEADERS "*.{h,inl}")
+file(GLOB GLTF_HEADERS "*.h" "*.inl")
 set_target_properties(gltf PROPERTIES PUBLIC_HEADER "${GLTF_HEADERS}")
 
 install(TARGETS gltf EXPORT ufglib DESTINATION lib/ufg PUBLIC_HEADER DESTINATION include/ufg/gltf)

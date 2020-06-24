@@ -29,7 +29,7 @@ add_library(common
   platform.h
 )
 
-file(GLOB COMMON_HEADERS "*.{h,inl}")
+file(GLOB COMMON_HEADERS "*.h" "*.inl")
 set_target_properties(common PROPERTIES PUBLIC_HEADER "${COMMON_HEADERS}")
 
 target_link_libraries(common gltf)
