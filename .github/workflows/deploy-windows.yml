@@ -26,12 +26,28 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+        - name: Set up NASM
+      uses: ilammy/setup-nasm@v1.2.1
+      
+    - name: Install PIL
+      run: pip install Pillow
+      
+    - uses: suisei-cn/actions-download-file@v1
+      id: downloadfile  # Remember to give an ID if you need the output filename
+      name: Download USD
+      with:
+        url: "https://github.com/ux3d/USD/releases/download/testRelease2/usd_win_amd64.zip"
+        target: ../resources/usd
+
+    - name: Extracting USD
+      run: Expand-Archive -Path ../resources/usd/usd_win_amd64.zip -DestinationPath ../resources/usd/
+
     # Runs a set of commands using the runners shell
     - name: Build UFG
-      run: |
+      run:  |
             echo "Build UFG"
-            python {UFG_SRC}/tools/ufginstall/ufginstall.py ../artifacts/ufg {USD} 
-    
+            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
+
     - name: Archive the release
       run: |
             cd ../artifacts

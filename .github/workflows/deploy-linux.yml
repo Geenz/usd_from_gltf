@@ -61,7 +61,7 @@ jobs:
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ../artifacts/usd_linux64.tar.gz
-        asset_name: usd_linux64.tar.gz
+        file: ../artifacts/ufg_linux64.tar.gz
+        asset_name: ufg_linux64.tar.gz
         tag: ${{ github.ref }}
         overwrite: true
