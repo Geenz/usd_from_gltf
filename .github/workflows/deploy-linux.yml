@@ -32,11 +32,21 @@ jobs:
     - name: Install PIL
       run: pip install Pillow
       
+    - uses: suisei-cn/actions-download-file@v1
+      id: downloadfile  # Remember to give an ID if you need the output filename
+      name: Download USD
+      with:
+        url: "https://github.com/ux3d/USD/releases/download/testRelease2/usd_linux64.tar.gz"
+        target: ../resources/usd
+
+    - name: Extracting USD
+      run: tar -xf ../resources/usd/usd_linux64.tar.gz -C ../resources/usd/
+
     # Runs a set of commands using the runners shell
     - name: Build UFG
       run:  |
             echo "Build UFG"
-            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ./path/to/usd 
+            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
     
     - name: Archive the release
       run: |
