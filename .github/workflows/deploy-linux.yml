@@ -28,13 +28,15 @@ jobs:
     
     - name: Set up NASM
       uses: ilammy/setup-nasm@v1.2.1
-
+      
+    - name: Install PIL
+      run: pip install Pillow
+      
     # Runs a set of commands using the runners shell
     - name: Build UFG
       run:  |
             echo "Build UFG"
-            python ../../tools/ufginstall/ufginstall.py 
-            #../artifacts/ufg {USD} 
+            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ./path/to/usd 
     
     - name: Archive the release
       run: |
