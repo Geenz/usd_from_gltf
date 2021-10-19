@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release Build Windows
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  repository_dispatch:
+    types: do-something
+    
+  # Trigger when release created
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a set of commands using the runners shell
+    - name: Build UFG
+      run: |
+            echo "Build UFG"
+            python {UFG_SRC}/tools/ufginstall/ufginstall.py ../artifacts/ufg {USD} 
+    
+    - name: Archive the release
+      run: |
+            cd ../artifacts
+            echo "Create an archive containing the install files"
+            Compress-Archive ufg/* ufg_win64.zip
+            echo "Done"
+          
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ../artifacts/ufg_win64.zip
+        asset_name: ufg_win64.zip
+        tag: ${{ github.ref }}
+        overwrite: true
