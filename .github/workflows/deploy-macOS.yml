@@ -28,8 +28,10 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Build UFG
+      run:  |
             echo "Build UFG"
             python {UFG_SRC}/tools/ufginstall/ufginstall.py ../artifacts/ufg {USD} 
+    
     
     - name: Archive the release
       run: |
