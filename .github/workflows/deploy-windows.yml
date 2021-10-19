@@ -27,8 +27,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Test
-      rund: dir
-      
+      run: dir
 
     - name: Set up NASM
       uses: ilammy/setup-nasm@v1.2.1
