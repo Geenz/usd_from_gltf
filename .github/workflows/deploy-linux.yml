@@ -30,7 +30,7 @@ jobs:
     - name: Build UFG
       run:  |
             echo "Build UFG"
-            python {UFG_SRC}/tools/ufginstall/ufginstall.py ../artifacts/ufg {USD} 
+            python ../../tools/ufginstall/ufginstall.py ../artifacts/ufg {USD} 
     
     - name: Archive the release
       run: |
