@@ -25,6 +25,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    
+    - name: Test
+      rund: dir
+      
 
     - name: Set up NASM
       uses: ilammy/setup-nasm@v1.2.1
@@ -47,6 +51,11 @@ jobs:
       run:  |
             echo "Build UFG"
             python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
+    
+    - name: Show Result
+      run: |
+            cd ../artifacts/ufg
+            dir
 
     - name: Archive the release
       run: |
