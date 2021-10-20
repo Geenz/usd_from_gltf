@@ -52,16 +52,16 @@ jobs:
       run: |
             cd ../artifacts/ufg
             echo "Create an archive containing the install files"
-            tar -zcf ufg_linux64.tar.gz *
+            tar -zcf ufg_linux_amd64.tar.gz *
             echo "Done"
             cd ..
-            mv ufg/ufg_linux64.tar.gz .
+            mv ufg/ufg_linux_amd64.tar.gz .
           
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ../artifacts/ufg_linux64.tar.gz
-        asset_name: ufg_linux64.tar.gz
+        file: ../artifacts/ufg_linux_amd64.tar.gz
+        asset_name: ufg_linux_amd64.tar.gz
         tag: ${{ github.ref }}
         overwrite: true

@@ -65,14 +65,14 @@ jobs:
       run: |
             cd ../artifacts
             echo "Create an archive containing the install files"
-            Compress-Archive ufg/* ufg_win64.zip
+            Compress-Archive ufg/* ufg_win_amd64.zip
             echo "Done"
           
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ../artifacts/ufg_win64.zip
-        asset_name: ufg_win64.zip
+        file: ../artifacts/ufg_win_amd64.zip
+        asset_name: ufg_win_amd64.zip
         tag: ${{ github.ref }}
         overwrite: true
