@@ -39,7 +39,7 @@ jobs:
       id: downloadfile  # Remember to give an ID if you need the output filename
       name: Download USD
       with:
-        url: "https://github.com/ux3d/USD/releases/download/testRelease2/usd_win_amd64.zip"
+        url: "https://github.com/ux3d/USD/releases/download/testRelease2/usd_win_amd64_debug.zip"
         target: ../resources/usd
 
     - name: Extracting USD
@@ -48,7 +48,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Build UFG
       run:  |
-            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
+            python ./tools/ufginstall/ufginstall.py --config Debug ../artifacts/ufg ../resources/usd 
     
     - name: Remove build
       uses: JesseTG/rm@v1.0.2
@@ -64,14 +64,14 @@ jobs:
       run: |
             cd ../artifacts
             echo "Create an archive containing the install files"
-            Compress-Archive ufg/* ufg_win_amd64.zip
+            Compress-Archive ufg/* ufg_win_amd64_debug.zip
             echo "Done"
           
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ../artifacts/ufg_win_amd64.zip
-        asset_name: ufg_win_amd64.zip
+        file: ../artifacts/ufg_win_amd64_debug.zip
+        asset_name: ufg_win_amd64_debug.zip
         tag: ${{ github.ref }}
         overwrite: true
