@@ -29,6 +29,8 @@ set(USD_INCLUDE_DIRS
   "${USD_DIR}/include/boost-1_61"
 # Visual Studio 2017 requires boost 1.65.1.
   "${USD_DIR}/include/boost-1_65_1"
+# USD uses boost-1_70
+  "${USD_DIR}/include/boost-1_70"
   ${Python_INCLUDE_DIRS}
 )
 
