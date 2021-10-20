@@ -51,10 +51,15 @@ jobs:
             echo "Build UFG"
             python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
     
-    - name: Show Result
-      run: |
-            cd ../artifacts/ufg
-            dir
+    - name: Remove build
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: ../artifacts/ufg/build  
+
+    - name: Remove src
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: ../artifacts/ufg/src    
 
     - name: Archive the release
       run: |
