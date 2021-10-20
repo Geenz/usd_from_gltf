@@ -36,11 +36,11 @@ jobs:
       id: downloadfile  # Remember to give an ID if you need the output filename
       name: Download USD
       with:
-        url: "https://github.com/ux3d/USD/releases/download/testRelease2/usd_linux64.tar.gz"
+        url: "https://github.com/ux3d/USD/releases/download/2021-10-20-0/usd_linux_amd64.tar.gz"
         target: ../resources/usd
 
     - name: Extracting USD
-      run: tar -xf ../resources/usd/usd_linux64.tar.gz -C ../resources/usd/
+      run: tar -xf ../resources/usd/usd_linux_amd64.tar.gz -C ../resources/usd/
 
     # Runs a set of commands using the runners shell
     - name: Build UFG
