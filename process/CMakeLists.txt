@@ -65,7 +65,7 @@ set_target_properties(process PROPERTIES PUBLIC_HEADER "${PROCESS_HEADERS}")
 # for them because on different distros, they appear in different locations.
 set(INSTALLED_LIBRARY_DIR ${stb_image_LIBRARY_DIR})
 find_library(PNG_LIBRARY
-  NAMES libpng16.a libpng16_static.lib
+  NAMES libpng16.a libpng16_static.lib libpng16_staticd.lib
   HINTS ${stb_image_LIBRARY_DIR} ${PARENT_DIR}/lib64
 )
 if (NOT PNG_LIBRARY)
