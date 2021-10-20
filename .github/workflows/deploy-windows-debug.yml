@@ -43,7 +43,7 @@ jobs:
         target: ../resources/usd
 
     - name: Extracting USD
-      run: Expand-Archive -Path ../resources/usd/usd_win_amd64.zip -DestinationPath ../resources/usd/
+      run: Expand-Archive -Path ../resources/usd/usd_win_amd64_debug.zip -DestinationPath ../resources/usd/
 
     # Runs a set of commands using the runners shell
     - name: Build UFG
