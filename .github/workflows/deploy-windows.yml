@@ -48,7 +48,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Build UFG
       run:  |
-            python ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
+            python3 ./tools/ufginstall/ufginstall.py ../artifacts/ufg ../resources/usd 
     
     - name: Remove build
       uses: JesseTG/rm@v1.0.2
