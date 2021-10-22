@@ -109,8 +109,8 @@ set(CompilerFlags
   CMAKE_C_FLAGS_RELEASE
 )
 foreach(CompilerFlag ${CompilerFlags})
-  string(REPLACE "/MDd" "/MD" ${CompilerFlag} "${${CompilerFlag}}")
-  string(REPLACE "/RTC1" "" ${CompilerFlag} "${${CompilerFlag}}")
+#  string(REPLACE "/MDd" "/MD" ${CompilerFlag} "${${CompilerFlag}}")
+#  string(REPLACE "/RTC1" "" ${CompilerFlag} "${${CompilerFlag}}")
 endforeach()
 
 else (MSVC)
