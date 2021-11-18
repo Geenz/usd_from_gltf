@@ -13,6 +13,12 @@
 # limitations under the License.
 
 cmake_minimum_required (VERSION 3.0)
+
+if(APPLE)
+	set(MACOSX_DEPLOYMENT_TARGET "10.14")
+  set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "")
+endif()
+
 project (usd_from_gltf)
 
 # We don't use Python in this tool, but when the USD library is built with
