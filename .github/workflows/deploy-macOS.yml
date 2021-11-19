@@ -36,7 +36,7 @@ jobs:
       id: downloadfile  # Remember to give an ID if you need the output filename
       name: Download USD
       with:
-        url: "https://github.com/ux3d/USD/releases/download/2021-10-20-1/usd_macOS_amd64.tar.gz"
+        url: "https://github.com/ux3d/USD/releases/download/v2021.11.0/usd_macOS_amd64.tar.gz"
         target: ../resources/usd
 
     - name: Extracting USD
