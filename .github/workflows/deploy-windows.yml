@@ -39,7 +39,7 @@ jobs:
       id: downloadfile  # Remember to give an ID if you need the output filename
       name: Download USD
       with:
-        url: "https://github.com/ux3d/USD/releases/download/v2021.11.0/usd_win_amd64.zip"
+        url: "https://github.com/ux3d/USD/releases/download/v2021.11.1/usd_win_amd64.zip"
         target: ../resources/usd
 
     - name: Extracting USD
