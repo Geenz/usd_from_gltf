@@ -51,7 +51,7 @@ jobs:
       run: |
             cd ../artifacts/ufg
             echo "Create an archive containing the install files"
-            tar -zcf ufg_macOS_amd64.tar.gz *
+            tar --posix -zcf ufg_macOS_amd64.tar.gz *
             echo "Done"
             cd ..
             mv ufg/ufg_macOS_amd64.tar.gz .
