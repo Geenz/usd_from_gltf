@@ -134,6 +134,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_INSTALL_RPATH "${USD_DIR}/lib")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
+if(APPLE)
+	# Ensure the rpath is already deployable for build targets (i.e. doesn't
+	# contain absolute paths into the build tree)
+    set(CMAKE_SKIP_BUILD_RPATH TRUE)
+    set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+	set(CMAKE_INSTALL_RPATH "@executable_path;@loader_path/Frameworks;@executable_path/../Frameworks")
+endif()
+
 add_subdirectory(common)
 add_subdirectory(convert)
 add_subdirectory(gltf)
