@@ -15,8 +15,8 @@
 cmake_minimum_required (VERSION 3.0)
 
 if(APPLE)
-	set(MACOSX_DEPLOYMENT_TARGET "10.14")
-  set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "")
+	set(MACOSX_DEPLOYMENT_TARGET "10.15")
+  set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "")
 endif()
 
 project (usd_from_gltf)
