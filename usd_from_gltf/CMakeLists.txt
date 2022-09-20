@@ -34,4 +34,6 @@ target_link_libraries(usd_from_gltf
   ${USD_LIBS}
 )
 
+set_property(TARGET usd_from_gltf PROPERTY XCODE_ATTRIBUTE_ENABLE_HARDENED_RUNTIME YES)
+
 install(TARGETS usd_from_gltf DESTINATION bin)
