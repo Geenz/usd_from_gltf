@@ -26,19 +26,19 @@ if (MSVC)
 target_link_libraries(ufg_plugin
   convert
   ${USD_LIBS}
-  arch.lib
+  usd_arch.lib
 )
 elseif (APPLE)
 target_link_libraries(ufg_plugin
   convert
   ${USD_LIBS}
-  libarch.dylib
+  libusd_arch.dylib
 )
 else ()
 target_link_libraries(ufg_plugin
   convert
   ${USD_LIBS}
-  libarch.so
+  libusd_arch.so
 )
 endif ()
 
