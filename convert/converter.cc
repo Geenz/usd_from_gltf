@@ -33,6 +33,8 @@
 #include "pxr/usd/usdGeom/scope.h"
 #include "pxr/usd/usdGeom/tokens.h"
 #include "pxr/usd/usdGeom/xform.h"
+#include "pxr/usd/usdGeom/primvar.h"
+#include "pxr/usd/usdGeom/primvarsAPI.h"
 #include "pxr/usd/usdShade/materialBindingAPI.h"
 #include "pxr/usd/usdSkel/animation.h"
 #include "pxr/usd/usdSkel/bindingAPI.h"
@@ -635,6 +637,8 @@ void Converter::CreateMesh(
     UsdGeomMesh usd_mesh = UsdGeomMesh::Define(cc_.stage, path);
     usd_mesh.CreateSubdivisionSchemeAttr().Set(UsdGeomTokens->none);
 
+    auto primAPI = pxrInternal_v0_22__pxrReserved__::UsdGeomPrimvarsAPI(usd_mesh.GetPrim());
+    
     // Set vertex attributes.
     UFG_ASSERT_FORMAT(!prim_info.pos.empty());
     SetVertexValues(usd_mesh.GetPointsAttr(), prim_info.pos,
@@ -680,7 +684,7 @@ void Converter::CreateMesh(
           uv = &transformed_uv;
         }
         const TfToken uvset_tok(AppendNumber("st", number));
-        const UsdGeomPrimvar uvs_primvar = usd_mesh.CreatePrimvar(
+        const UsdGeomPrimvar uvs_primvar = primAPI.CreatePrimvar(
             uvset_tok, SdfValueTypeNames->TexCoord2fArray,
             UsdGeomTokens->vertex);
         SetVertexValues(uvs_primvar, *uv, emulate_double_sided);
